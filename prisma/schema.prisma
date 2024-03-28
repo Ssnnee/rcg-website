@@ -1,0 +1,28 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Committee {
+  id    Int     @id @default(autoincrement())
+  title String  @unique
+  description  String?
+  members Member[]
+}
+
+model Member {
+  id        Int     @id @default(autoincrement())
+  title     String ?
+  name   String
+  resumePdf   String?
+  committee    Committee    @relation(fields: [committeeId], references: [id])
+  committeeId  Int
+}
+
