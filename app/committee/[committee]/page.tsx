@@ -105,31 +105,15 @@ export default function CommiteePage({
 };
 
 
-  // const deleteMember = (id: number) => {
-  //   delMember.mutate(
-  //     {
-  //       id,
-  //     },
-  //     {
-  //       onSettled: () => committee.refetch(),
-  //     }
-  //   );
-  // };
-
-  const deleteMember = async (id: number, resumePdf: string) => {
-    try {
-      // Delete the associated file
-      await fetch(`/fileName=${resumePdf}`, { method: "DELETE" });
-
-      // Delete the member
-      delMember.mutate({ id });
-
-      // Refresh committee data
-      committee.refetch();
-    } catch (error) {
-      console.error("Error occurred while deleting member:", error);
-      // Handle error gracefully (e.g., display an error message to the user)
-    }
+  const deleteMember = (id: number) => {
+    delMember.mutate(
+      {
+        id,
+      },
+      {
+        onSettled: () => committee.refetch(),
+      }
+    );
   };
 
 
