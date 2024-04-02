@@ -5,6 +5,11 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+const memberUpdateSchema = z.object({
+  id: z.number(),
+  title: z.string(),
+  name: z.string(),
+})
 export const membersRouter = router({
   get: publicProcedure.query(async () => {
     return prisma.member.findMany();
@@ -32,29 +37,35 @@ export const membersRouter = router({
     }),
 
   update: publicProcedure
+    .input(memberUpdateSchema)
+    .mutation(({ input }) => {
+      return prisma.member.update({
+        where: {
+          id: input.id,
+        },
+        data: memberUpdateSchema.parse(input),
+      });
+    }),
+
+    updateFile: publicProcedure
     .input(
       z.object({
         id: z.number(),
-        title: z.string(),
-        name: z.string(),
         resumePdf: z.string(),
-        committeeId: z.number(),
       })
     )
     .mutation(async (opts) => {
       const { input } = opts;
       await prisma.member.update({
-        where:{
+        where: {
           id: input.id,
         },
         data: {
-          title: input.title,
-          name: input.name,
           resumePdf: input.resumePdf,
-          committeeId: input.committeeId,
         },
       });
     }),
+
 
   delete: publicProcedure
     .input(

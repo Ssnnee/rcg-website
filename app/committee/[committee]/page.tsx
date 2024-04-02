@@ -37,6 +37,7 @@ export default function CommiteePage({
   const addMember = trpc.member.create.useMutation();
   const updateMember = trpc.member.update.useMutation();
   const delMember = trpc.member.delete.useMutation();
+  const upFile = trpc.member.updateFile.useMutation();
 
   const addNewMember = () => {
     if (!committee.data?.id) {
@@ -69,43 +70,69 @@ export default function CommiteePage({
     }
   };
 
-  const updateNewCommittee = () => {
-  if (!committee.data?.id) {
-    return;
-  }
-  if (fileRef.current?.files && fileRef.current.files.length > 0) {
-    const formData = new FormData();
-    const file = fileRef.current.files[0];
-    formData.append("files", file);
-    try {
-      fetch("/api/file", { method: "PUT", body: formData });
-
-      // Assuming `updateMember.mutate` is asynchronous
-       updateMember.mutate(
+  const updateFile = (id: number, path: string | null) => {
+    if (!committee.data?.id || !path) {
+      return ;
+    }
+    if (fileRefUpdate.current?.files) {
+      const formData = new FormData();
+      const file = fileRefUpdate.current.files[0];
+      if (!file) {
+        alert('Veuillez sélectionner un fichier non vide.');
+        return;
+      }
+      formData.append("files", file);
+      const request = { method: "POST", body: formData };
+      fetch("/api/file", request);
+      upFile.mutate(
         {
-          id: params.committee,
-          title: titleUpdate,
-          name: nameUpdate,
-          committeeId: committee.data?.id,
+          id: id,
           resumePdf: `/${file.name}`,
         },
         {
           onSettled: () => committee.refetch(),
         }
       );
+    }
+    onDelete(path);
+  }
 
-      // Update UI or perform any necessary actions after successful update
-      setTitleUpdate("");
-      setNameUpdate("");
-    } catch (error) {
-      console.error("Error occurred while updating member:", error);
-      // Handle error gracefully (e.g., display an error message to the user)
+  const updateNewMember = (id: number) => {
+    if (!committee.data?.id) {
+      return;
+    }
+    console.log("Here is the id I got :", params.committee)
+    updateMember.mutate(
+      {
+        id: id,
+        title: titleUpdate,
+        name: nameUpdate,
+      },
+      {
+        onSettled: () => committee.refetch(),
+      });
+        setTitleUpdate("");
+        setNameUpdate("");
+  };
+
+  const onDelete = async (path: string) => {
+    const formData = new FormData()
+    formData.append('path', path)
+    try {
+      const res = await fetch('/api/upload', {
+        method: 'DELETE',
+        body: formData
+      })
+      if (!res.ok) throw new Error(await res.text())
+    } catch (e: any) {
+      console.error(e)
     }
   }
-};
 
-
-  const deleteMember = (id: number) => {
+  const deleteMember = (id: number, path: string | null) => {
+    if (!path) {
+      return ;
+    }
     delMember.mutate(
       {
         id,
@@ -114,6 +141,7 @@ export default function CommiteePage({
         onSettled: () => committee.refetch(),
       }
     );
+    onDelete(path);
   };
 
 
@@ -122,6 +150,7 @@ export default function CommiteePage({
   const [name, setName] = useState<string>("");
   const [nameUpdate, setNameUpdate] = useState<string>("");
   const fileRef = useRef<HTMLInputElement>(null);
+  const fileRefUpdate = useRef<HTMLInputElement>(null);
 
   return (
     <div className="p-24">
@@ -131,7 +160,7 @@ export default function CommiteePage({
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Creation du member</DialogTitle>
+            <DialogTitle>Ajout du member</DialogTitle>
             <DialogDescription>
               Ajouter quelque membres au comité {committee.data?.title}
             </DialogDescription>
@@ -192,18 +221,19 @@ export default function CommiteePage({
                         <p>Titre (optionnel):</p>
                         <Input
                           value={titleUpdate}
-                          placeholder={""}
+                          placeholder={member.title ?? ""}
                           onChange={(e) => setTitleUpdate(e.target.value)}
                          />
-                        <p>PDF:</p>
-                        <Input type="file" ref={fileRef} />
-                        <Button onClick={updateNewCommittee}>Sauvegarder</Button>
+                        <Button onClick={() => updateNewMember(member.id)}>Modifier</Button>
+                        <p>Changer le PDF:</p>
+                        <Input type="file" ref={fileRefUpdate} className="cursor-pointer" />
+                        <Button onClick={() => updateFile(member.id, member.resumePdf)}>Changer le PDF</Button>
                       </div>
                     </DialogHeader>
                   </DialogContent>
                 </Dialog>
 
-                <Button onClick={() => deleteMember(member.id)}>Supprimer</Button>
+                <Button onClick={() => deleteMember(member.id, member.resumePdf)}>Supprimer</Button>
               </TableCell>
             </TableRow>
           ))}
@@ -212,4 +242,3 @@ export default function CommiteePage({
     </div>
   );
 }
-
