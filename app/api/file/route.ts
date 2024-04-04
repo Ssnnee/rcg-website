@@ -25,9 +25,10 @@ export async function POST(request: Request): Promise<NextResponse> {
 
 export async function DELETE(request: Request){
 
-  const data = await request.json();
-  console.log(data.url);
-  return NextResponse.json({ success: true, url: data.url });
+  const requestBody = await request.json();
+  const { path } = requestBody;
+  await del(path);
+  return NextResponse.json({ success: true,});
 
 }
 // The next lines are required for Pages API Routes only
