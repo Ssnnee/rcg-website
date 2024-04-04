@@ -33,29 +33,3 @@ export async function POST(req: NextRequest, res: NextResponse) {
     return NextResponse.json({ status: "fail", data: e });
   }
 }
-
-export async function DELETE(req: NextRequest, res: NextResponse) {
-  try {
-    // Extract the fileName from the query parameters
-    const { fileName } = req.query;
-
-    // Check if fileName is provided
-    if (!fileName || typeof fileName !== 'string') {
-      return NextResponse.error();
-    }
-
-    // Construct the file path
-    const filePath = `./public/${fileName}`;
-
-    // Check if the file exists
-    if (fs.existsSync(filePath)) {
-      // Delete the file
-      fs.unlinkSync(filePath);
-      return NextResponse.json({ status: "success", message: "File deleted successfully." });
-    } else {
-      return NextResponse.error();
-    }
-  } catch (error) {
-    return NextResponse.error();
-  }
-}

@@ -29,8 +29,8 @@ export default function Home() {
             La Revue Congolaise de Gestion
           </h1>
           <p className="text-lg text-center md:text-left mt-4 font-imbue">
-            Revue semestrielle publiée par l'École Supérieure de
-            Gestion et d' Administration des Entreprises <a href='https://esgae.org'> (E.S.G.A.E.) </a>
+            Revue semestrielle publiée par l&apos;École Supérieure de
+            Gestion et d&apos;Administration des Entreprises <a href='https://esgae.org'> (E.S.G.A.E.) </a>
           </p>
         </div>
 
@@ -76,7 +76,7 @@ export default function Home() {
           <div>
             <h2> Rédacteur en Chef </h2>
             <p> <strong> Pr Augustin A. Adja ANASSE  </strong> </p>
-            <p> Université de Bouaké, Côte d'Ivoire  </p>
+            <p> Université de Bouaké, Côte d&apos;Ivoire  </p>
 
           </div>
 
