@@ -63,7 +63,7 @@ export default function CommiteePage({
           title,
           name,
           committeeId: committee.data?.id,
-          resumePdf: `/${newBlob.url}`,
+          resumePdf: `${newBlob.url}`,
         },
         {
           onSettled: () => committee.refetch(),
@@ -122,17 +122,15 @@ export default function CommiteePage({
   };
 
   const onDelete = async (path: string) => {
-    const formData = new FormData()
-    formData.append('path', path)
-    try {
-      const res = await fetch('/api/upload', {
-        method: 'DELETE',
-        body: formData
-      })
-      if (!res.ok) throw new Error(await res.text())
-    } catch (e: any) {
-      console.error(e)
+    if (!path) {
+      return ;
     }
+    await fetch(
+      `/api/file`,
+      {
+        method: "DELETE",
+        body: JSON.stringify({path: path}),
+      });
   }
 
   const deleteMember = (id: number, path: string | null) => {
