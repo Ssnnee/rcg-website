@@ -22,6 +22,7 @@ import {
 
 import { trpc } from "@/server/client";
 import React, { useRef, useState } from "react";
+import type { PutBlobResult } from '@vercel/blob';
 
 export default function CommiteePage({
   params,
@@ -39,20 +40,23 @@ export default function CommiteePage({
   const delMember = trpc.member.delete.useMutation();
   const upFile = trpc.member.updateFile.useMutation();
 
-  const addNewMember = () => {
+  const addNewMember  = async () => {
     if (!committee.data?.id) {
       return ;
     }
     if (fileRef.current?.files) {
-      const formData = new FormData();
       const file = fileRef.current.files[0];
       if (!file) {
         alert('Veuillez sélectionner un fichier non vide.');
         return;
       }
-      formData.append("files", file);
-      const request = { method: "POST", body: formData };
-      fetch("/api/file", request);
+      const response = await fetch(
+        `/api/file?filename=${file.name}`,
+          {
+            method: "POST",
+            body: file
+          });
+      const newBlob = (await response.json()) as PutBlobResult;
       addMember.mutate(
         {
           title,
@@ -67,6 +71,7 @@ export default function CommiteePage({
 
       setTitle("");
       setName("");
+      setBlob(newBlob);
     }
   };
 
@@ -82,8 +87,8 @@ export default function CommiteePage({
         return;
       }
       formData.append("files", file);
-      const request = { method: "POST", body: formData };
-      fetch("/api/file", request);
+      const response = { method: "POST", body: formData };
+      fetch("/api/file", response);
       upFile.mutate(
         {
           id: id,
@@ -151,6 +156,7 @@ export default function CommiteePage({
   const [nameUpdate, setNameUpdate] = useState<string>("");
   const fileRef = useRef<HTMLInputElement>(null);
   const fileRefUpdate = useRef<HTMLInputElement>(null);
+  const [blob, setBlob] = useState<PutBlobResult | null>(null);
 
   return (
     <div className="p-24">
@@ -239,6 +245,11 @@ export default function CommiteePage({
           ))}
         </TableBody>
       </Table>
+      {blob && (
+        <div>
+          Blob url: <a href={blob.url}>{blob.url}</a>
+        </div>
+      )}
     </div>
   );
 }
