@@ -11,8 +11,21 @@ const memberUpdateSchema = z.object({
   name: z.string(),
 })
 export const membersRouter = router({
-  get: publicProcedure.query(async () => {
-    return prisma.member.findMany();
+  getMembers: publicProcedure
+  .input(
+    z.object({
+      committeeId: z.number(),
+    })
+  )
+  .query(async (opts) => {
+    const {input} = opts;
+    return prisma.member.findMany(
+      {
+        where:{
+          committeeId: input.committeeId
+        }
+      }
+    );
   }),
 
   create: publicProcedure

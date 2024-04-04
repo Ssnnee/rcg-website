@@ -170,7 +170,7 @@ export default function CommiteePage({
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
-              <p>Titre (optionnel):</p>
+              <p>Université :</p>
               <Input value={title} onChange={(e) => setTitle(e.target.value)} />
               <p>PDF:</p>
               <Input type="file" ref={fileRef} className="cursor-pointer" />
@@ -184,7 +184,7 @@ export default function CommiteePage({
         <TableHeader>
           <TableRow>
             <TableHead>Nom</TableHead>
-            <TableHead>Titre</TableHead>
+            <TableHead>Université</TableHead>
             <TableHead>PDF</TableHead>
             <TableHead>Action</TableHead>
           </TableRow>
@@ -218,7 +218,7 @@ export default function CommiteePage({
                           placeholder={member.name}
                           onChange={(e) => setNameUpdate(e.target.value)}
                         />
-                        <p>Titre (optionnel):</p>
+                        <p>Université :</p>
                         <Input
                           value={titleUpdate}
                           placeholder={member.title ?? ""}

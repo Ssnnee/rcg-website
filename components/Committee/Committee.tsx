@@ -13,7 +13,7 @@ export default function Committee() {
   const commitees = trpc.committee.get.useQuery();
 
   return (
-    <div className="flex justify-center items-center gap-8">
+    <div className="flex justify-center gap-8">
       {commitees.data?.map((committee) => (
         <Link key={committee.id} href={`/committee/${committee.id}`}>
           <Card>
