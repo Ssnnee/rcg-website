@@ -136,7 +136,7 @@ export default function CommiteePage({
       });
   }
 
-  const deleteMember = (id: number, path: string | null) => {
+  const deleteMember = (id: number, path: string ) => {
     if (!path) {
       return ;
     }
@@ -241,7 +241,7 @@ export default function CommiteePage({
                   </DialogContent>
                 </Dialog>
 
-                <Button onClick={() => deleteMember(member.id, member.resumePdf)}>Supprimer</Button>
+                <Button onClick={() => deleteMember(member.id, member.resumePdf || "")}>Supprimer</Button>
               </TableCell>
             </TableRow>
           ))}
