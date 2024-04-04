@@ -72,11 +72,10 @@ export default function CommiteePage({
 
       setTitle("");
       setName("");
-      setBlob(newBlob);
     }
   };
 
-  const updateFile = async (id: number, path: string | null) => {
+  const updateFile = async (id: number, path: string ) => {
     if (!committee.data?.id || !path) {
       return ;
     }
@@ -158,7 +157,6 @@ export default function CommiteePage({
   const [nameUpdate, setNameUpdate] = useState<string>("");
   const fileRef = useRef<HTMLInputElement>(null);
   const fileRefUpdate = useRef<HTMLInputElement>(null);
-  const [blob, setBlob] = useState<PutBlobResult | null>(null);
 
   return (
     <div className="p-24">
@@ -235,7 +233,7 @@ export default function CommiteePage({
                         <Button onClick={() => updateNewMember(member.id)}>Modifier</Button>
                         <p>Changer le PDF:</p>
                         <Input type="file" ref={fileRefUpdate} className="cursor-pointer" />
-                        <Button onClick={() => updateFile(member.id, member.resumePdf)}>Changer le PDF</Button>
+                        <Button onClick={() => updateFile(member.id, member.resumePdf || "")}>Changer le PDF</Button>
                       </div>
                     </DialogHeader>
                   </DialogContent>
@@ -247,11 +245,6 @@ export default function CommiteePage({
           ))}
         </TableBody>
       </Table>
-      {blob && (
-        <div>
-          Blob url: <a href={blob.url}>{blob.url}</a>
-        </div>
-      )}
     </div>
   );
 }
