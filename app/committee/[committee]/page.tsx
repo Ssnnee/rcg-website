@@ -57,17 +57,21 @@ export default function CommiteePage({
             body: file
           });
       const newBlob = (await response.json()) as PutBlobResult;
-      addMember.mutate(
-        {
-          title,
-          name,
-          committeeId: committee.data?.id,
-          resumePdf: `/${file.name}`,
-        },
-        {
-          onSettled: () => committee.refetch(),
-        }
-      );
+
+      if(blob) {
+
+        addMember.mutate(
+          {
+            title,
+            name,
+            committeeId: committee.data?.id,
+            resumePdf: `/${blob.url}`,
+          },
+          {
+            onSettled: () => committee.refetch(),
+          }
+        );
+      }
 
       setTitle("");
       setName("");
