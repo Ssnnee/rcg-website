@@ -6,7 +6,6 @@ import { Header } from "@/components/Header";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import book from "../public/book.png";
-import ScientificDirector from "@/components/Committee/ScientificDirecteur";
 
 export default function Home() {
   return (
