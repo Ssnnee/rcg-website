@@ -76,24 +76,27 @@ export default function CommiteePage({
     }
   };
 
-  const updateFile = (id: number, path: string | null) => {
+  const updateFile = async (id: number, path: string | null) => {
     if (!committee.data?.id || !path) {
       return ;
     }
     if (fileRefUpdate.current?.files) {
-      const formData = new FormData();
       const file = fileRefUpdate.current.files[0];
       if (!file) {
         alert('Veuillez sélectionner un fichier non vide.');
         return;
       }
-      formData.append("files", file);
-      const response = { method: "POST", body: formData };
-      fetch("/api/file", response);
+      const response = await fetch(
+        `/api/file?filename=${file.name}`,
+          {
+            method: "POST",
+            body: file
+          });
+      const newBlob = (await response.json()) as PutBlobResult;
       upFile.mutate(
         {
           id: id,
-          resumePdf: `/${file.name}`,
+          resumePdf: `${newBlob.url}`,
         },
         {
           onSettled: () => committee.refetch(),

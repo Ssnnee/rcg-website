@@ -26,7 +26,7 @@ export async function POST(request: Request): Promise<NextResponse> {
 export async function DELETE(request: Request){
 
   const data = await request.json();
-  await del(data.url);
+  console.log(data.url);
   return NextResponse.json({ success: true });
 
 }
