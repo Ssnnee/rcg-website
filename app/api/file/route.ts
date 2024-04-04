@@ -27,7 +27,7 @@ export async function DELETE(request: Request){
 
   const data = await request.json();
   console.log(data.url);
-  return NextResponse.json({ success: true });
+  return NextResponse.json({ success: true, url: data.url });
 
 }
 // The next lines are required for Pages API Routes only
