@@ -49,7 +49,7 @@ export const Header = () => {
         </div>
       </div>
       {isMenuOpen && (
-        <nav className="md:hidden">
+        <nav className="md:hidden transition">
           <ul className="flex flex-col items-center space-y-4">
             {navItems.map((item, index) => (
               <li key={index}>

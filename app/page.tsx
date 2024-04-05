@@ -94,7 +94,7 @@ export default function Home() {
 
           <div>
             <h2> Secrétaire de rédaction </h2>
-            <p> <strong> Grâce NKOUZOU ; Blin NKOUKA  </strong> </p>
+            <p> <strong> Grâce NKOUZOU </strong> </p>
           </div>
 
           <Separator />
@@ -102,8 +102,7 @@ export default function Home() {
           <div>
             <h2> <strong> Charte Ethique </strong> </h2>
             <p>
-              Les règles éthiques applicables aux comités de rédaction de la revues
-              académiques Revue Congolaise de Gestion, sont disponibles sur
+              Les règles éthiques applicables aux comités de rédaction Revue Congolaise de Gestion, sont disponibles sur
               <a
                 href="https://www.cairn.info/charte-ethique.php"
                 className="text-blue-500 " > cette page . </a>
