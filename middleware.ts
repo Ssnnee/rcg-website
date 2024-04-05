@@ -6,7 +6,7 @@ export function middleware(request: NextRequest) {
   console.log("Here is the user cookies :", user)
 
   console.log("Here is the request url from midde :", request.url)
-  if (!user?.value && request.url.includes('/admin')) {
+  if (!user?.value && /(\/admin|\/committee)/.test(request.url)) {
     return NextResponse.redirect(new URL('/login', request.url))
   }
 
