@@ -221,13 +221,13 @@ export default function CommiteePage({
                         <p>Nom :</p>
                         <Input
                           value={nameUpdate}
-                          placeholder={member.name}
+                          defaultValue={member.name}
                           onChange={(e) => setNameUpdate(e.target.value)}
                         />
                         <p>Université :</p>
                         <Input
                           value={titleUpdate}
-                          placeholder={member.title ?? ""}
+                          defaultValue={member.title || ""}
                           onChange={(e) => setTitleUpdate(e.target.value)}
                          />
                         <Button onClick={() => updateNewMember(member.id)}>Modifier</Button>
