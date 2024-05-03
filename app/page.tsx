@@ -113,13 +113,13 @@ export default function Home() {
 
       </section>
 
-      <section id='comitéscientique' className="container mx-auto min-h-[100vh] px-6 py-14 mt-6 flex justify-center items-start flex-col border border-gray-200 rounded">
+      <section id='comitéscientique' className="container mx-auto min-h-[100vh] px-6 py-16 mt-6 flex justify-center items-start flex-col border border-gray-200 rounded">
         <h1 className="text-3xl font-bold text-center ">  Comité Scientifique de la Revue Congolaise de Gestion </h1>
         <br />
         <ScientificCommittee />
       </section>
 
-      <section id='comitédelecture' className="container mx-auto min-h-[100vh] px-6 py-14 mt-6 flex justify-center items-start flex-col border border-gray-200 rounded">
+      <section id='comitédelecture' className="container mx-auto min-h-[100vh] px-6 py-16 mt-6 flex justify-center items-start flex-col border border-gray-200 rounded">
         <h1 className="text-3xl font-bold text-center ">  Comité de lecture  de la Revue Congolaise de Gestion </h1>
         <br />
         <LectureCommittee />
