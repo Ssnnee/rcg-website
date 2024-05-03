@@ -43,7 +43,7 @@ export default function Home() {
       </section>
 
       <section id='apropos' className="container mx-auto my-4 p-4 min-h-[20vh] flex items-center flex-col border border-gray-200 rounded">
-        <div className='w-full flex flex-col text-left gap-6 text-xl'>
+        <div className='w-full flex flex-col text-left gap-6 text-xl py-12'>
           <p>
             La Revue Congolaise de Gestion (RCG) est une publication francophone
             de recherche et de vulgarisation scientifique dans les domaines de la science économique et de la gestion.
@@ -113,13 +113,13 @@ export default function Home() {
 
       </section>
 
-      <section id='comitéscientique' className="container mx-auto min-h-[100vh] p-6 mt-6 flex justify-center items-start flex-col border border-gray-200 rounded">
+      <section id='comitéscientique' className="container mx-auto min-h-[100vh] px-6 py-12 mt-6 flex justify-center items-start flex-col border border-gray-200 rounded">
         <h1 className="text-3xl font-bold text-center ">  Comité Scientifique de la Revue Congolaise de Gestion </h1>
         <br />
         <ScientificCommittee />
       </section>
 
-      <section id='comitéscientique' className="container mx-auto min-h-[100vh] p-6 mt-6 flex justify-center items-start flex-col border border-gray-200 rounded">
+      <section id='comitéscientique' className="container mx-auto min-h-[100vh] px-6 py-12 mt-6 flex justify-center items-start flex-col border border-gray-200 rounded">
         <h1 className="text-3xl font-bold text-center ">  Comité de lecture  de la Revue Congolaise de Gestion </h1>
         <br />
         <LectureCommittee />
