@@ -8,6 +8,7 @@ import {
   CardDescription,
 } from "../ui/card";
 import Link from "next/link";
+import { CommitteeCardSkeleton } from "./CommitteeCardSkeleton";
 
 export default function Committee() {
   const commitees = trpc.committee.get.useQuery();
@@ -23,7 +24,7 @@ export default function Committee() {
             </CardHeader>
           </Card>
         </Link>
-      )) ?? <div>Chargement...</div>}
+      )) ?? <CommitteeCardSkeleton />}
     </div>
   );
 }
