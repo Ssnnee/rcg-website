@@ -1,6 +1,7 @@
 "use client";
 import { trpc } from "@/server/client";
- import { Separator } from "../ui/separator";
+import { Separator } from "../ui/separator";
+import { CommitteeSkeleton } from "./CommitteeSkeleton";
 
 export default function ScientificCommittee() {
   const commiteeMembersList = trpc.member.getMembers.useQuery({committeeId: 1});
@@ -15,7 +16,7 @@ export default function ScientificCommittee() {
             </div>
             {index !== commiteeMembersList.data?.length - 1 && <Separator />}
           </div>
-        )) ?? <div>Chargement...</div>}
+        )) ?? <CommitteeSkeleton />}
       </div>
   );
 }
