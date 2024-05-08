@@ -8,10 +8,9 @@ import Link from "next/link";
 export default function LectureCommittee() {
   const commiteeMembersList = trpc.member.getMembers.useQuery({committeeId: 2});
   return (
-      <div>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-center items-center'>
         {commiteeMembersList.data?.map((member, index) => (
-        <div key={index} className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-center items-center'>
-          <div>
+          <div key={index} >
             <Card className="sm:w-[500px] md:w-[350px]">
               <CardTitle className="text-2xl text-center my-2"> {member.name} </CardTitle>
               <CardContent className="text-center">
@@ -24,8 +23,8 @@ export default function LectureCommittee() {
               </CardFooter>
             </Card>
           </div>
-        </div>
-        )) ?? <CommitteeSkeleton />}
+        )) ??
+        <CommitteeSkeleton />}
       </div>
   );
 }

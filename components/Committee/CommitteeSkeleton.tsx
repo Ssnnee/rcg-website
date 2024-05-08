@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 
 export function CommitteeSkeleton() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-center items-center">
+    <>
       {[...Array(6)].map((_, index) => (
         <div key={index} className="space-y-4">
           <Card className="sm:w-[500px] md:w-[350px]">
@@ -23,6 +23,6 @@ export function CommitteeSkeleton() {
           </Card>
         </div>
       ))}
-    </div>
+    </>
   );
 }

@@ -1,7 +1,8 @@
 "use client";
 import { trpc } from "@/server/client";
+import { Separator } from "../ui/separator";
 import { CommitteeSkeleton } from "./CommitteeSkeleton";
-import { Card, CardContent, CardFooter, CardTitle } from "../ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
 import Link from "next/link";
 
@@ -9,10 +10,9 @@ export default function ScientificCommittee() {
   const commiteeMembersList = trpc.member.getMembers.useQuery({committeeId: 1});
 
   return (
-      <div>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-center items-center'>
         {commiteeMembersList.data?.map((member, index) => (
-        <div key={index} className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-center items-center'>
-          <div>
+          <div key={index} >
             <Card className="sm:w-[500px] md:w-[350px]">
               <CardTitle className="text-2xl text-center my-2"> {member.name} </CardTitle>
               <CardContent className="text-center">
@@ -25,8 +25,8 @@ export default function ScientificCommittee() {
               </CardFooter>
             </Card>
           </div>
-        </div>
-        )) ?? <CommitteeSkeleton />}
+        )) ??
+        <CommitteeSkeleton />}
       </div>
   );
 }
