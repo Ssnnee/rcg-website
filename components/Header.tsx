@@ -3,75 +3,106 @@ import React, { useState } from 'react';
 
 import { HamburgerMenuIcon, Cross2Icon } from '@radix-ui/react-icons';
 
-import logo from "../public/rcg_logo.svg"
-import Image from 'next/image';
+import Link from 'next/link';
+import { cn } from '@/lib/utils';
+import { ModeToggle } from './ModeToggle';
+import { Button } from './ui/button';
 
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navItems = ["Accueil","A propos", "Comité Scientique" , "Comité de Lecture"];
+  const navItems = ["Accueil","A propos", "Comité Scientifique" , "Comité de Lecture"];
+  const [activeItem, setActiveItem] = useState("");
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleItemClick = (item: string) => {
+    setActiveItem(item);
+    toggleMenu();
+  };
+
+
   return (
-    <header className="sticky top-0 w-full mx-auto bg-white shadow-md z-50">
+    <header className="sticky top-0 w-full bg-background mx-auto shadow-md z-50">
       <div className="flex items-center justify-between p-4">
-        <a href='/' className="text-2xl font-bold">
-        <Image src={logo}
-          alt="Revue Logo"
-          height={36}
-        />
+        <a href='/' className="font-bold">
+          <h1 className="">Revue Congolaise de Gestion</h1>
         </a>
-        <nav className="hidden md:flex">
+        <nav className="hidden lg:flex">
           <ul className="flex gap-2 space-x-4">
             {navItems.map((item, index) => (
-              <li key={index}>
-                <a href={`#${item.replace(/\s+/g, '').toLowerCase()}`} className="text-lg hover:text-gray-600">
+              <li key={index} onClick={() => handleItemClick(item)}>
+                <Link
+                  href={item === "Accueil" ? "/" : `#${item.replace(/\s+/g, '').toLowerCase()}`}
+                  className={cn(
+                    "transition-colors hover:text-foreground/80",
+                    activeItem === item ? "text-foreground" : "text-foreground/60"
+                  )}
+                >
                   {item}
-                </a>
+                </Link>
               </li>
             ))}
             <li>
-              <a href='https://www.cairn.info/revue-congolaise-de-gestion.htm?contenu=liste-numeros' className="text-lg hover:text-gray-600">
+              <Link href='https://www.cairn.info/revue-congolaise-de-gestion.htm?contenu=liste-numeros'
+                className="transition-colors text-foreground/60 hover:text-foreground">
                 Archives
-              </a>
+              </Link>
             </li>
+
           </ul>
         </nav>
-        <div className="md:hidden">
+        <div className='hidden lg:flex items-center justify-center gap-4 '>
+          <Button variant={"default"} className="w-max transform transition-all hover:scale-105">
+            <a href="#contact" className="text-sm">Nous contacter</a>
+          </Button>
+          <ModeToggle />
+        </div>
+        <div className="lg:hidden">
           {isMenuOpen ? (
-              <Cross2Icon onClick={toggleMenu} />
+            <Button variant={"outline"} onClick={toggleMenu}>
+              <Cross2Icon className="text-3xl"  />
+            </Button>
           ) : (
-            <HamburgerMenuIcon className="text-3xl" onClick={toggleMenu} />
+            <Button variant={"outline"} onClick={toggleMenu}>
+              <HamburgerMenuIcon className="text-3xl" />
+            </Button>
           )}
         </div>
       </div>
       {isMenuOpen && (
-        <nav className="md:hidden transition">
-          <ul className="flex flex-col items-center space-y-4">
+        <nav className="lg:hidden transition">
+          <ul className="flex flex-col m-3 items-center space-y-4">
             {navItems.map((item, index) => (
-              <li key={index}>
-                <a
-                  href={`#${item.replace(/\s+/g, '').toLowerCase()}`}
-                  className="text-lg hover:text-gray-600"
-                  onClick={toggleMenu}
+              <li key={index} onClick={() => handleItemClick(item)}>
+                <Link
+                  href={item === "Accueil" ? "/" : `#${item.replace(/\s+/g, '').toLowerCase()}`}
+                  className={cn(
+                    "transition-colors hover:text-foreground/80",
+                    activeItem === item ? "text-foreground" : "text-foreground/60"
+                  )}
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   {item}
-                </a>
+                </Link>
               </li>
             ))}
             <li>
-              <a href='https://www.cairn.info/revue-congolaise-de-gestion.htm?contenu=liste-numeros' className="text-lg hover:text-gray-600">
+              <Link href='https://www.cairn.info/revue-congolaise-de-gestion.htm?contenu=liste-numeros'
+                className="transition-colors text-foreground/60 hover:text-foreground">
                 Archives
-              </a>
+              </Link>
             </li>
+            <Button variant={"default"} className="w-max transform transition-all hover:scale-105">
+              <a href="#contact" className="text-sm">Nous contacter</a>
+            </Button>
+            <ModeToggle />
           </ul>
         </nav>
       )}
     </header>
   );
 };
-
 
