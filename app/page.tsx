@@ -6,13 +6,16 @@ import { Header } from "@/components/Header";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import book from "../public/book.png";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import ContactForm from "@/components/ContactForm";
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between mb-h">
       <Header />
 
-      <section id='accueil' className="container mx-auto p-4 min-h-[30rem] flex flex-col md:flex-row justify-center items-center border border-gray-200 rounded">
+      <section id='accueil' className=" my-16 p-4 max-w-[75rem] flex flex-col md:flex-row justify-center items-center">
 
         <figure className='h-44 sm:h-52 overflow-hidden md:hidden mb-10' >
           <Image
@@ -23,14 +26,17 @@ export default function Home() {
           />
         </figure>
 
-        <div className="w-full">
+        <div className="w-full flex flex-col items-center md:items-start">
           <h1 className="lg:text-5xl text-4xl font-bold text-center md:text-left">
             La Revue Congolaise de Gestion
           </h1>
-          <p className="text-lg text-center md:text-left mt-4 font-imbue">
+          <p className="text-3xl text-center md:text-left mt-4 font-imbue">
             Revue semestrielle publiée par l&apos;École Supérieure de
             Gestion et d&apos;Administration des Entreprises <a href='https://esgae.org'> (E.S.G.A.E.) </a>
           </p>
+          <Button variant={"default"} className="mt-11 p-5 w-max transform transition-all hover:scale-105">
+            <a href="#contact" className="text-xl">Nous contacter</a>
+          </Button>
         </div>
 
         <figure className='w-full md:w-2/3 flex justify-center relative mb-2' >
@@ -42,8 +48,9 @@ export default function Home() {
         </figure>
       </section>
 
-      <section id='apropos' className="container mx-auto my-4 p-4 min-h-[20vh] flex items-center flex-col border border-gray-200 rounded">
-        <div className='w-full flex flex-col text-left gap-6 text-xl py-12'>
+      <section id='apropos' className="w-full bg-green-500 my-14 md:my-24  mx-auto p-4 min-h-[20vh] flex items-center flex-col border-y border ">
+        <div className='w-full flex flex-col text-left gap-6 max-w-[75rem] text-xl py-12'>
+          <h1 className="text-3xl font-bold text-center ">  A propos </h1>
           <p>
             La Revue Congolaise de Gestion (RCG) est une publication francophone
             de recherche et de vulgarisation scientifique dans les domaines de la science économique et de la gestion.
@@ -113,20 +120,34 @@ export default function Home() {
 
       </section>
 
-      <section id='comitéscientique' className="container mx-auto min-h-[100vh] px-6 py-16 mt-6 flex justify-center items-start flex-col border border-gray-200 rounded">
+      <section id='comitéscientifique' className="w-full mx-auto min-h-[100vh] px-6 py-16 mt-6 flex justify-center items-center flex-col ">
         <h1 className="text-3xl font-bold text-center ">  Comité Scientifique de la Revue Congolaise de Gestion </h1>
         <br />
         <ScientificCommittee />
       </section>
 
-      <section id='comitédelecture' className="container mx-auto min-h-[100vh] px-6 py-16 mt-6 flex justify-center items-start flex-col border border-gray-200 rounded">
+      <section id='comitédelecture' className="bg-green-500 w-full mx-auto min-h-[100vh] px-6 py-16 mt-6 flex justify-center items-center flex-col border border-gray-20">
         <h1 className="text-3xl font-bold text-center ">  Comité de lecture  de la Revue Congolaise de Gestion </h1>
         <br />
         <LectureCommittee />
       </section>
 
-      <Footer />
+      <section id='contact' className="w-full mx-auto px-6 py-16 mt-6 flex justify-center items-center flex-col">
+        <Card className="w-full max-w-[750px]">
+          <CardHeader>
+            <CardTitle className="text-3xl text-center">Nous contacter</CardTitle>
+            <CardDescription className="text-center">
+              Souhaitez-vous nous contacter ?
+              Remplissez le formulaire ci-dessous.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ContactForm />
+          </CardContent>
+        </Card>
+      </section>
 
+      <Footer />
     </main>
   );
 }

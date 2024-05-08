@@ -4,7 +4,6 @@ import { trpc } from "@/server/client";
 
 export default function ScientificDirector() {
   const commiteeMembersList = trpc.member.getMembers.useQuery({committeeId: 3});
-  console.log(commiteeMembersList.data)
 
   return (
       <div className='flex gap-4 flex-col text-left  text-xl'>

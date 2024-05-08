@@ -1,18 +1,28 @@
 import { Skeleton } from "../ui/skeleton";
 import { Separator } from "../ui/separator";
+import { Card, CardContent, CardFooter, CardTitle } from "../ui/card";
+import { Button } from "../ui/button";
 
 export function CommitteeSkeleton() {
   return (
-    <>
-      {[...Array(5)].map((_, index) => (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-center items-center">
+      {[...Array(6)].map((_, index) => (
         <div key={index} className="space-y-4">
-          <Skeleton className="h-4 w-[250px]" />
-          <Skeleton className="h-4 w-[350px]" />
-          <Skeleton className="h-5 w-16" />
-          {index !== [...Array(5)].length - 1 && <Separator />}
+          <Card className="sm:w-[500px] md:w-[350px]">
+            <CardTitle className="my-6 flex justify-center items-center">
+              <Skeleton className="h-4 w-[150px]" />
+            </CardTitle>
+            <CardContent className="flex justify-center items-center">
+              <Skeleton className="h-4 w-[200px]" />
+            </CardContent>
+            <CardFooter className="w-full">
+              <Button variant={"outline"} className="w-full" >
+                <Skeleton className="h-5 w-16" />
+              </Button>
+            </CardFooter>
+          </Card>
         </div>
       ))}
-    </>
+    </div>
   );
 }
-
