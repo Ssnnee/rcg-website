@@ -12,7 +12,7 @@ export default function LectureCommittee() {
         {commiteeMembersList.data?.map((member, index) => (
           <div key={index} >
             <Card className="sm:w-[500px] md:w-[350px]">
-              <CardTitle className="text-xl text-center my-2"> {member.name} </CardTitle>
+              <CardTitle className="text-lg text-center my-2 font-semibold"> {member.name} </CardTitle>
               <CardContent className="text-center">
                 <p className="text-lg"> {member.title} </p>
               </CardContent>
