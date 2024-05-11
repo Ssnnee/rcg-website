@@ -120,7 +120,7 @@ export default function ContactForm() {
               <Input disabled={isDisabled} type="text" id="subject" placeholder="Sujet" {...field} />
             </FormControl>
             <FormDescription>
-              Veuillez renseigner la raison pour laquelle pour vous souhaitez nous contacter
+              Veuillez renseigner la raison pour laquelle vous souhaitez nous contacter
             </FormDescription>
             <FormMessage />
           </FormItem>
