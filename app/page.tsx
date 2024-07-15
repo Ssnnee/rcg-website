@@ -4,11 +4,10 @@ import ScientificCommittee from "@/components/Committee/ScientificCommittee";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Separator } from "@/components/ui/separator";
-import Image from "next/image";
-import book from "../public/book.png";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import ContactForm from "@/components/ContactForm";
+import RedactionCommittee from "@/components/Committee/RedactionCommittee";
 
 export default function Home() {
   return (
@@ -18,8 +17,8 @@ export default function Home() {
       <section id='accueil' className=" my-16 p-4 max-w-[75rem] flex flex-col md:flex-row justify-center items-center">
 
         <figure className='h-44 sm:h-52 overflow-hidden md:hidden mb-10' >
-          <Image
-            src={book}
+          <img
+            src="https://ttng73y6ntif8ra7.public.blob.vercel-storage.com/book-Bfm9Ze9yL4sDIYlooeGg45AColMSsa.png"
             alt="placeholder"
             title='Revue Congolaise de Gestion'
             className="md:hidden xl:h-80 relative"
@@ -40,8 +39,8 @@ export default function Home() {
         </div>
 
         <figure className='w-full md:w-2/3 flex justify-center relative mb-2' >
-          <Image
-            src={book}
+          <img
+            src="https://ttng73y6ntif8ra7.public.blob.vercel-storage.com/book-Bfm9Ze9yL4sDIYlooeGg45AColMSsa.png"
             alt="Revue actuelle"
             title='Revue Congolaise de Gestion' className="hidden md:block xl:h-80 relative"
           />
@@ -130,6 +129,12 @@ export default function Home() {
         <h1 className="text-3xl font-bold text-center ">  Comité de lecture  de la Revue Congolaise de Gestion </h1>
         <br />
         <LectureCommittee />
+      </section>
+
+      <section id='comitéscientifique' className="w-full mx-auto min-h-[100vh] px-6 py-16 mt-6 flex justify-center items-center flex-col ">
+        <h1 className="text-3xl font-bold text-center ">  Comité Scientifique de la Revue Congolaise de Gestion </h1>
+        <br />
+        <RedactionCommittee />
       </section>
 
       <section id='contact' className="w-full mx-auto px-6 py-16 mt-6 flex justify-center items-center flex-col">

@@ -1,5 +1,4 @@
 import { Skeleton } from "../ui/skeleton";
-import { Separator } from "../ui/separator";
 import { Card, CardContent, CardFooter, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
 
