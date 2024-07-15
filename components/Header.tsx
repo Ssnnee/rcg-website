@@ -11,7 +11,7 @@ import { Button } from './ui/button';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navItems = ["Accueil","A propos", "Comité Scientifique" , "Comité de Lecture"];
+  const navItems = ["Accueil","A propos", "Comité Scientifique" , "Comité de Lecture", "Comité de Rédaction"];
   const [activeItem, setActiveItem] = useState("");
 
   const toggleMenu = () => {
