@@ -137,7 +137,7 @@ export default function Home() {
         <RedactionCommittee />
       </section>
 
-      <section id='contact' className="w-full mx-auto px-6 py-16 mt-6 flex justify-center items-center flex-col">
+      <section id='contact' className="w-full bg-green-500 mx-auto px-6 py-16 mt-6 flex justify-center items-center flex-col">
         <Card className="w-full max-w-[750px]">
           <CardHeader>
             <CardTitle className="text-3xl text-center">Nous contacter</CardTitle>
