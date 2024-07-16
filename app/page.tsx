@@ -26,7 +26,7 @@ export default function Home() {
         </figure>
 
         <div className="w-full flex flex-col items-center md:items-start">
-          <h1 className="lg:text-5xl text-4xl font-bold text-center md:text-left">
+          <h1 className="lg:text-5xl text-4xl font-bold text-center md:text-left font-imbue">
             La Revue Congolaise de Gestion
           </h1>
           <p className="text-3xl text-center md:text-left mt-4 font-imbue">

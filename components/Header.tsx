@@ -28,7 +28,7 @@ export const Header = () => {
     <header className="sticky top-0 w-full bg-background mx-auto shadow-md z-50">
       <div className="flex items-center justify-between p-4">
         <a href='/' className="font-bold">
-          <h1 className="">Revue Congolaise de Gestion</h1>
+          <h1 className="font-cursive text-xl">Revue Congolaise de Gestion</h1>
         </a>
         <nav className="hidden lg:flex">
           <ul className="flex gap-2 space-x-4">
