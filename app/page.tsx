@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import ContactForm from "@/components/ContactForm";
 import RedactionCommittee from "@/components/Committee/RedactionCommittee";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -62,18 +63,24 @@ export default function Home() {
             un large public désireux de se tenir au courant de l’évolution de la science économique et des sciences de gestion.
           </p>
 
-          <Separator />
+          { /* <Separator />
 
-          <div className="">
+           <div className="">
             <h2> Directeurs Scientifiques </h2>
             <p> <strong> Pr Oliver Jean Marie GAUSSENS / Pr. André Patient BOKIBA  </strong> </p>
             <p> E.S.G.A.E - Congo  </p>
           </div>
+          */ }
           <Separator />
           <div className="">
             <h2> Directeur de la publication </h2>
             <p> <strong> Pr Roger Armand MAKANY  </strong> </p>
             <p> E.S.G.A.E - Congo  </p>
+            <Link
+              href="https://ttng73y6ntif8ra7.public.blob.vercel-storage.com/CV%20DG%2029%20juillet%202024-WquIPNg6JybkXZKN4Gfolm0NsNOYyI.pdf"
+              className="text-blue-500">
+              CV
+            </Link>
           </div>
 
           <Separator />
@@ -82,6 +89,11 @@ export default function Home() {
             <h2> Rédacteur en Chef </h2>
             <p> <strong> Pr Augustin A. Adja ANASSE  </strong> </p>
             <p> Université de Bouaké, Côte d&apos;Ivoire  </p>
+            <Link
+              href="https://ttng73y6ntif8ra7.public.blob.vercel-storage.com/ANASSE%20Adja%20CV-egKBAk1IFuWkRFJPXqEzj7HiLYL2GO.pdf"
+              className="text-blue-500">
+              CV
+            </Link>
 
           </div>
 
