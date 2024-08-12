@@ -75,7 +75,9 @@ export default function Home() {
             <p> E.S.G.A.E - Congo  </p>
             <Link
               href="https://ttng73y6ntif8ra7.public.blob.vercel-storage.com/CV%20DG%2029%20juillet%202024-WquIPNg6JybkXZKN4Gfolm0NsNOYyI.pdf"
-              className="text-blue-500">
+              className="text-blue-500"
+              target="_blank"
+              >
               CV
             </Link>
           </div>
@@ -88,7 +90,9 @@ export default function Home() {
             <p> Université de Bouaké, Côte d&apos;Ivoire  </p>
             <Link
               href="https://ttng73y6ntif8ra7.public.blob.vercel-storage.com/ANASSE%20Adja%20CV-egKBAk1IFuWkRFJPXqEzj7HiLYL2GO.pdf"
-              className="text-blue-500">
+              className="text-blue-500"
+              target="_blank"
+              >
               CV
             </Link>
 
@@ -120,7 +124,9 @@ export default function Home() {
               Les règles éthiques applicables aux comités de rédaction Revue Congolaise de Gestion, sont disponibles sur
               <a
                 href="https://www.cairn.info/charte-ethique.php"
-                className="text-blue-500 " > cette page . </a>
+                className="text-blue-500 "
+                target="_blank"
+              > cette page . </a>
             </p>
           </div>
 

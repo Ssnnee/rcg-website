@@ -23,7 +23,9 @@ export default function Committee({ committeeId }: CommitteeParams) {
               <CardFooter className="">
                 <Link
                   href={member.resumePdf ?? ''}
-                  className="text-blue-500 w-full">
+                  className="text-blue-500 w-full"
+                  target="_blank"
+                  >
                   <Button variant={"outline"} className="w-full" >CV</Button>
                 </Link>
               </CardFooter>
