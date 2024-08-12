@@ -1,14 +1,11 @@
-import LectureCommittee from "@/components/Committee/LectureCommittee";
-import ScientificCommittee from "@/components/Committee/ScientificCommittee";
-
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import ContactForm from "@/components/ContactForm";
-import RedactionCommittee from "@/components/Committee/RedactionCommittee";
 import Link from "next/link";
+import Committee from "@/components/Committee/CommitteeC";
 
 export default function Home() {
   return (
@@ -134,19 +131,19 @@ export default function Home() {
       <section id='comitéscientifique' className="w-full mx-auto min-h-[100vh] px-6 py-16 mt-6 flex justify-center items-center flex-col ">
         <h1 className="text-3xl font-bold text-center ">  Comité Scientifique de la Revue Congolaise de Gestion </h1>
         <br />
-        <ScientificCommittee />
+        <Committee committeeId={1} />
       </section>
 
       <section id='comitédelecture' className="bg-green-500 w-full mx-auto min-h-[100vh] px-6 py-16 mt-6 flex justify-center items-center flex-col border border-gray-20">
         <h1 className="text-3xl font-bold text-center ">  Comité de lecture  de la Revue Congolaise de Gestion </h1>
         <br />
-        <LectureCommittee />
+        <Committee committeeId={2} />
       </section>
 
       <section id='comitéderédaction' className="w-full mx-auto min-h-[100vh] px-6 py-16 mt-6 flex justify-center items-center flex-col ">
         <h1 className="text-3xl font-bold text-center ">  Comité de Rédaction </h1>
         <br />
-        <RedactionCommittee />
+        <Committee committeeId={4} />
       </section>
 
       <section id='contact' className="w-full bg-green-500 mx-auto px-6 py-16 mt-6 flex justify-center items-center flex-col">

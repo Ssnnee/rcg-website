@@ -24,10 +24,7 @@ import { trpc } from "@/server/client";
 import React, { useRef, useState } from "react";
 import type { PutBlobResult } from '@vercel/blob';
 
-export default function CommiteePage({
-  params,
-}: {
-  params: { committee: number };
+export default function CommiteePage({ params, }: { params: { committee: number };
 }) {
 
   const committee = trpc.committee.getById.useQuery({
