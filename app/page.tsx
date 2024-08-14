@@ -152,6 +152,31 @@ export default function Home() {
         <Committee committeeId={4} />
       </section>
 
+      <section id='archives' className="max-w-screen-md lg p-4 min-h-[20vh] px-6 py-16 mt-6 flex justify-center items-center flex-col ">
+        <h1 className="text-3xl font-bold text-center ">  Accès aux Archives de la Revue Congolaise de Gestion </h1>
+
+        <p className="text-center mt-6">
+          Les numéros archivés de la Revue Congolaise de Gestion sont
+          disponibles sur
+          <a href="CAIRN.info"
+            className="text-blue-500 "
+            target="_blank" > CAIRN.info
+          </a>
+          . Cette plateforme vous permet de consulter
+          l'ensemble des publications passées, contribuant ainsi à la diffusion
+          des recherches et des travaux académiques en sciences économiques et
+          de gestion.
+        </p>
+          <Button variant={"default"} className="mt-11 p-5 w-max transform transition-all hover:scale-105">
+            <a
+              href="https://www.cairn.info/revue-congolaise-de-gestion.htm?contenu=liste-numeros"
+              className="text-xl"
+              target="_blank"
+            >
+              En savoir plus</a>
+          </Button>
+      </section>
+
       <section id='contact' className="w-full bg-green-500 mx-auto px-6 py-16 mt-6 flex justify-center items-center flex-col">
         <Card className="w-full max-w-[750px]">
           <CardHeader>

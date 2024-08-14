@@ -11,7 +11,7 @@ import { Button } from './ui/button';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navItems = ["Accueil","A propos", "Comité Scientifique" , "Comité de Lecture", "Comité de Rédaction"];
+  const navItems = ["Accueil","A propos", "Comité Scientifique" , "Comité de Lecture", "Comité de Rédaction", "Archives"];
   const [activeItem, setActiveItem] = useState("");
 
   const toggleMenu = () => {
@@ -45,13 +45,6 @@ export const Header = () => {
                 </Link>
               </li>
             ))}
-            <li>
-              <Link href='https://www.cairn.info/revue-congolaise-de-gestion.htm?contenu=liste-numeros'
-                className="transition-colors text-foreground/60 hover:text-foreground">
-                Archives
-              </Link>
-            </li>
-
           </ul>
         </nav>
         <div className='hidden lg:flex items-center justify-center gap-4 '>
@@ -89,12 +82,6 @@ export const Header = () => {
                 </Link>
               </li>
             ))}
-            <li>
-              <Link href='https://www.cairn.info/revue-congolaise-de-gestion.htm?contenu=liste-numeros'
-                className="transition-colors text-foreground/60 hover:text-foreground">
-                Archives
-              </Link>
-            </li>
             <Button variant={"default"} className="w-max transform transition-all hover:scale-105">
               <a href="#contact" className="text-sm">Nous contacter</a>
             </Button>
