@@ -163,7 +163,7 @@ export default function Home() {
             target="_blank" > CAIRN.info
           </a>
           . Cette plateforme vous permet de consulter
-          l'ensemble des publications passées, contribuant ainsi à la diffusion
+          l&apos;ensemble des publications passées, contribuant ainsi à la diffusion
           des recherches et des travaux académiques en sciences économiques et
           de gestion.
         </p>
