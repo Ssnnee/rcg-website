@@ -9,7 +9,7 @@ import Committee from "@/components/Committee/CommitteeC";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between mb-h">
+    <main className="flex min-h-screen flex-col items-center justify-between mb-h ">
       <Header />
 
       <section id='accueil' className=" my-16 p-4 max-w-[75rem] flex flex-col md:flex-row justify-center items-center">
@@ -113,7 +113,7 @@ export default function Home() {
 
           <div>
             <h2> Secrétaire de rédaction </h2>
-            <p> <strong> Grâce NKOUZOU </strong> </p>
+            <p> <strong> - </strong> </p>
           </div>
 
           <Separator />

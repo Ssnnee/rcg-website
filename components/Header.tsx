@@ -31,11 +31,11 @@ export const Header = () => {
           <h1 className="font-cursive text-xl">Revue Congolaise de Gestion</h1>
         </a>
         <nav className="hidden lg:flex">
-          <ul className="flex gap-2 space-x-4">
+          <ul className="flex gap-2 space-x-4 ">
             {navItems.map((item, index) => (
               <li key={index} onClick={() => handleItemClick(item)}>
                 <Link
-                  href={item === "Accueil" ? "/" : `#${item.replace(/\s+/g, '').toLowerCase()}`}
+                  href={`#${item.replace(/\s+/g, '').toLowerCase()}`}
                   className={cn(
                     "transition-colors hover:text-foreground/80",
                     activeItem === item ? "text-foreground" : "text-foreground/60"
@@ -71,7 +71,7 @@ export const Header = () => {
             {navItems.map((item, index) => (
               <li key={index} onClick={() => handleItemClick(item)}>
                 <Link
-                  href={item === "Accueil" ? "/" : `#${item.replace(/\s+/g, '').toLowerCase()}`}
+                  href={`#${item.replace(/\s+/g, '').toLowerCase()}`}
                   className={cn(
                     "transition-colors hover:text-foreground/80",
                     activeItem === item ? "text-foreground" : "text-foreground/60"
