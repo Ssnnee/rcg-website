@@ -13,8 +13,8 @@ export async function POST(request: NextRequest ) {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: 'nandisamuelsne@gmail.com',
+      from: 'contact@revuecg.com',
+      to: 'contact@revuecg.com',
       subject: subject,
       text: "Message envoyé depuis le site de la Revue Congolaise de Gestion",
       react: EmailTemplate({ name: name, email: email, message:message })
